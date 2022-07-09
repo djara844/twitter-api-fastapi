@@ -112,10 +112,10 @@ def show_all_users():
     Show all Users
 
     This path operations shows all users in the app
-    
+
     Parameters:
         -
-    
+
     Returns a json list with all users in the app, with the following keys
         - user_id: UUID
         - email: Emailstr
@@ -175,7 +175,24 @@ def update_a_user():
     tags=["Tweets"],
 )
 def home():
-    return {"Twitter API": "Working"}
+    """
+    Show all tweets
+
+    This path operations shows all tweets in the app
+
+    Parameters:
+        -
+
+    Returns a json list with all tweets in the app, with the following keys
+        - tweet_id: UUID
+        - content: str
+        - created_at: datetime
+        - updated_at: datetime
+        - by: User
+    """
+    with open("tweets.json", "r", encoding="utf-8") as f:
+        results = json.loads(f.read())
+        return results
 
 
 ### Post a tweet
